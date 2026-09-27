@@ -67,7 +67,7 @@ CORS_ALLOWED_ORIGINS = [
     "http://localhost:4173",
     "http://127.0.0.1:5173",
     "http://127.0.0.1:4173",
-    "https://kaleidoscopic-tarsier-146c3d.netlify.app"
+    "https://kaleidoscopic-tarsier-146c3d.netlify.app",
 ]
 
 ROOT_URLCONF = 'config.urls'

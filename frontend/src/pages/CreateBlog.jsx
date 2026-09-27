@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom" 
+import API_BASE_URL from "../services/api" 
 
 function CreateBlog() {
 
@@ -50,7 +51,7 @@ function CreateBlog() {
                 return
             } 
 
-            const response = await fetch( "http://127.0.0.1:8000/api/blogs/", 
+            const response = await fetch( `${API_BASE_URL}/blogs/`, 
                 { 
                     method: "POST", 
                     headers: { "Content-Type": "application/json", Authorization: `Bearer ${token}`, }, 

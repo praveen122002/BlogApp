@@ -1,5 +1,6 @@
 import { useState } from "react"
 import { Link, useNavigate } from "react-router-dom"
+import API_BASE_URL from "../services/api"
 
 function Login() {
   const navigate = useNavigate()
@@ -29,7 +30,7 @@ function Login() {
 
     try {
       const response = await fetch(
-        import.meta.env.VITE_API_BASE_URL,
+        `${API_BASE_URL}/login/`,
         {
           method: "POST",
           headers: {
