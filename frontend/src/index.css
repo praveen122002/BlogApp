@@ -1,0 +1,255 @@
+@import "tailwindcss";
+
+body {
+  margin: 0;
+  min-width: 320px;
+  background-color: #f1f5f9;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+input[type="password"] {
+  color-scheme: dark;
+  -webkit-text-fill-color: white;
+}
+
+/* ========================================
+   FLOATING 3D ROLLING CUBE
+======================================== */
+
+.cube-wrapper {
+  position: absolute;
+  width: 180px;
+  height: 180px;
+
+  perspective: 900px;
+  transform-style: preserve-3d;
+
+  pointer-events: none;
+  z-index: 5;
+
+  animation: moveCube 18s ease-in-out infinite;
+}
+
+
+/* ========================================
+   CUBE ROTATION
+======================================== */
+
+.cube {
+  width: 180px;
+  height: 180px;
+
+  position: relative;
+
+  transform-style: preserve-3d;
+
+  animation: rollCube 8s linear infinite;
+}
+
+
+/* ========================================
+   CUBE FACES
+======================================== */
+
+.cube-face {
+  position: absolute;
+
+  width: 180px;
+  height: 180px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  background:
+    linear-gradient(
+      135deg,
+      rgba(20, 30, 50, 0.95),
+      rgba(5, 10, 20, 0.95)
+    );
+
+  border: 2px solid rgba(59, 130, 246, 0.45);
+
+  box-shadow:
+    inset 0 0 30px rgba(59, 130, 246, 0.08),
+    0 0 20px rgba(37, 99, 235, 0.15);
+
+  backface-visibility: visible;
+}
+
+
+/* ========================================
+   CUBE SIDES
+======================================== */
+
+.cube-front {
+  transform: translateZ(90px);
+}
+
+.cube-back {
+  transform: rotateY(180deg) translateZ(90px);
+}
+
+.cube-right {
+  transform: rotateY(90deg) translateZ(90px);
+}
+
+.cube-left {
+  transform: rotateY(-90deg) translateZ(90px);
+}
+
+.cube-top {
+  transform: rotateX(90deg) translateZ(90px);
+}
+
+.cube-bottom {
+  transform: rotateX(-90deg) translateZ(90px);
+}
+
+
+/* ========================================
+   3D ROLLING
+======================================== */
+
+@keyframes rollCube {
+
+  0% {
+    transform:
+      rotateX(0deg)
+      rotateY(0deg)
+      rotateZ(0deg);
+  }
+
+  25% {
+    transform:
+      rotateX(90deg)
+      rotateY(90deg)
+      rotateZ(45deg);
+  }
+
+  50% {
+    transform:
+      rotateX(180deg)
+      rotateY(180deg)
+      rotateZ(90deg);
+  }
+
+  75% {
+    transform:
+      rotateX(270deg)
+      rotateY(270deg)
+      rotateZ(135deg);
+  }
+
+  100% {
+    transform:
+      rotateX(360deg)
+      rotateY(360deg)
+      rotateZ(180deg);
+  }
+
+}
+
+
+/* ========================================
+   MOVING AROUND HOME PAGE
+======================================== */
+
+@keyframes moveCube {
+
+  0% {
+    left: 5%;
+    top: 15%;
+  }
+
+  20% {
+    left: 20%;
+    top: 55%;
+  }
+
+  40% {
+    left: 48%;
+    top: 12%;
+  }
+
+  60% {
+    left: 78%;
+    top: 30%;
+  }
+
+  80% {
+    left: 65%;
+    top: 70%;
+  }
+
+  100% {
+    left: 5%;
+    top: 15%;
+  }
+
+}
+
+
+/* ============================= */
+/* HOME PAGE ANIMATIONS */
+/* ============================= */
+
+@keyframes floating {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-20px);
+  }
+}
+
+@keyframes floatingSlow {
+  0%,
+  100% {
+    transform: translate(0, 0);
+  }
+
+  50% {
+    transform: translate(20px, -25px);
+  }
+}
+
+@keyframes glowMove {
+  0%,
+  100% {
+    transform: translateX(-50%) translateY(0);
+  }
+
+  50% {
+    transform: translateX(-50%) translateY(-30px);
+  }
+}
+
+@keyframes pulseGlow {
+  0%,
+  100% {
+    opacity: 0.4;
+  }
+
+  50% {
+    opacity: 1;
+  }
+}
+
+.animate-floating {
+  animation: floating 5s ease-in-out infinite;
+}
+
+.animate-floating-slow {
+  animation: floatingSlow 7s ease-in-out infinite;
+}
+
+.animate-glow {
+  animation: glowMove 8s ease-in-out infinite;
+}
+
+.animate-pulse-glow {
+  animation: pulseGlow 3s ease-in-out infinite;
+}
